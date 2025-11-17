@@ -1,0 +1,30 @@
+version: '3.8'
+
+# STUB: Container structure for RST-Hijack Watchdog
+# This will be implemented after proposal approval
+
+services:
+  # Main watchdog service - will run the RST detector
+  watchdog:
+    image: python:3.11-slim
+    container_name: rst_watchdog
+    volumes:
+      - ./src:/app/src
+    command: echo "Watchdog service - to be implemented"
+    
+  # Target server - will simulate a service to attack
+  target:
+    image: nginx:alpine
+    container_name: rst_target
+    ports:
+      - "8080:80"
+    
+  # Attacker container - will generate RST attacks for testing
+  attacker:
+    image: python:3.11-slim
+    container_name: rst_attacker
+    command: echo "Attack generator - to be implemented"
+
+networks:
+  testnet:
+    driver: bridge
